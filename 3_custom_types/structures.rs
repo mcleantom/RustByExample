@@ -22,6 +22,28 @@ struct Rectangle {
     bottom_right: Point,
 }
 
+fn rect_area(rect: Rectangle) -> f32 {
+    /*
+    Calculate the area of a rectangle.
+    */
+    let Rectangle { 
+        top_left: Point { x: x1, y: y1 },
+        bottom_right: Point { x: x2, y: y2 }
+    } = rect;
+    return (x2 - x1).abs() * (y2 - y1).abs();
+}
+
+fn square(tl: Point, width: f32) -> Rectangle {
+    /*
+    Create a square from a top left point and a width.
+    */
+    
+    Rectangle {
+        top_left: Point { x: tl.x, y: tl.y },
+        bottom_right: Point { x: tl.x + width, y: tl.y - width }
+    }
+}
+
 fn main() {
     let name = String::from("Tom");
     let age = 26;
@@ -47,4 +69,10 @@ fn main() {
     let pair = Pair(1, 0.1);
     let Pair(integer, decimal) = pair;
     println!("pair contains {:?} and {:?}", integer, decimal);
+
+    let area = rect_area(_rectangle);
+    println!("area is {:?}", area);
+
+    let sq = square(Point { x: 0.0, y: 0.0 }, 5.0);
+    println!("sq is {:?}", sq);
 }
