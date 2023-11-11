@@ -2,7 +2,7 @@ use crate::List::*;
 
 enum List {
     // Tuple struct that wraps an element and a pointer to the next node
-    // Box<List> is a pointer to the next node
+    // Box<List> is a smart pointer to the next node
     // Cons(u32, Box<List>) is a tuple of u32 and a pointer to the next node.
     Cons(u32, Box<List>),
     // A node that signifies the end of the linked list
@@ -44,6 +44,9 @@ impl List {
 
 
 fn main() {
+    // Values are stack allocated by default. Values can be heap allocated using Box.
+    // Box is a smart pointer. Boxed values can be dereferenced using *.
+
     let mut list = List::new();
 
     list = list.prepend(1).prepend(2).prepend(3);
